@@ -96,6 +96,3 @@ roslaunch ur5_e_moveit_config ur5_e_moveit_planning_execution.launch
 roslaunch ur5_e_moveit_config moveit_rviz.launch config:=true
 ````
 Now you can control ur5 by Rviz
-
-
-# Webots_Ros1_Moveit_UR5e
