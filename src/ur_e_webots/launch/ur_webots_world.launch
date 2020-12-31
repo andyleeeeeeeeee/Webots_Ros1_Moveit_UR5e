@@ -5,7 +5,7 @@
   <arg name="no-gui" default="false," doc="Start Webots with minimal GUI"/>
   <arg name="world" default="ur5"/>
 
-  <include file="$(find webots_ros)/launch/webots.launch">
+  <include file="$(find ur_e_webots)/launch/webots.launch">
     <arg name="mode" value="realtime"/>
     <arg name="no-gui" value="$(arg no-gui)"/>
     <arg name="world" value="$(find ur_e_webots)/worlds/$(arg world).wbt"/>

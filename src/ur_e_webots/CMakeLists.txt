@@ -21,3 +21,6 @@ catkin_install_python(PROGRAMS scripts/trajectory_follower.py
 
 catkin_install_python(PROGRAMS scripts/universal_robots_ros.py
         DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
+catkin_install_python(PROGRAMS scripts/webots_launcher.py
+        DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
