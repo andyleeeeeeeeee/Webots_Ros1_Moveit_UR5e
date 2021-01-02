@@ -1,4 +1,6 @@
 # Webots Ros1-Moveit UR5e
+A Webots Ros-Melodic-Moveit UR5e Demo with Docker Image Option.
+  
 If you prefer to use this repo without Docker engine, you can ignore [Dockerfile](Dockerfile) and you have to meet the Pre-requests as below:
 ## Pre-requests
  - Ubuntu 18.04
@@ -68,8 +70,6 @@ This repo needs 4 terminals in total, so after you do docker run in one terminal
 docker exec -it webots_interface bash
 ````
 ## Usage
-### Pre-requests
- 
 ### Launch webots world with ur5 (terminal 1)
 ````
 roslaunch ur_e_webots ur_webots_world.launch
