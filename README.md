@@ -1,7 +1,7 @@
 # Webots Ros1-Moveit UR5e
 A Webots Ros-Melodic-Moveit UR5e Demo with Docker Image Option.
-  
-If you prefer to use this repo without Docker engine, you can ignore [Dockerfile](Dockerfile) and you have to meet the Pre-requests as below:
+## Note 
+If you have Docker engine, you can skip 'Pre-requisites' and 'Install'. you can start from 'Docker Image' to build the [Dockerfile](Dockerfile) as a Docker Image and run this repo in a Docker container. If you prefer to use this repo without Docker engine, you can ignore Dockerfile and you have to meet the Pre-requests as below: 
 ## Pre-requests
  - Ubuntu 18.04
  - ROS Melodic-moveit
@@ -22,7 +22,6 @@ export WEBOTS_HOME=/usr/local/webots
 The [Dockerfile](Dockerfile), which can be used to build a docker image consists of ubuntu18.04, nvidia/cudagl, webots, ros-melodic, moveit, and self-defined ROS packages. 
 This is super useful and convenient. Any computer with recent Docker Engine and Nvidia GPU can easily use this repo without installing a ton of dependence. 
 Also, it can beyond the limitation of operating system, eg. you can even use this repo on Windows. 
-If you have Docker engine, you can build the [Dockerfile](Dockerfile) as a Docker Image and run this repo in a Docker container.
 ### Creat Image
 Using docker without 'sudo' the cmd. If you never done this before, it is suggested that typing in following cmd:
 ````
