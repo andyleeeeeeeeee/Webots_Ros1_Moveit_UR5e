@@ -15,9 +15,6 @@ catkin_make
 ````
 source ~/Webots_Ros1_Moveit_UR5e/devel/setup.bash
 ````
-````
-export WEBOTS_HOME=/usr/local/webots
-````
 ## Docker Image
 The [Dockerfile](Dockerfile), which can be used to build a docker image consists of ubuntu18.04, nvidia/cudagl, webots, ros-melodic, moveit, and self-defined ROS packages. 
 This is super useful and convenient. Any computer with recent Docker Engine and Nvidia GPU can easily use this repo without installing a ton of dependence. 
