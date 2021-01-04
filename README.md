@@ -1,11 +1,11 @@
 # Webots Ros1-Moveit UR5e
-A Webots Ros-Melodic-Moveit UR5e Demo with Docker Image Option.
-## Note 
-If you have Docker engine, you can skip 'Pre-requisites' and 'Install'. you can start from 'Docker Image' to build the [Dockerfile](Dockerfile) as a Docker Image and run this repo in a Docker container. If you prefer to use this repo without Docker engine, you can ignore Dockerfile and you have to meet the Pre-requests as below: 
+A Webots Ros-Noetic-Moveit UR5e Demo.
+
 ## Pre-requests
- - Ubuntu 18.04
- - ROS Melodic-moveit
+ - Ubuntu 20.04
+ - ROS Noetic-moveit 
  - Webots 2020b-rev1 or newer version
+
 ## Install
 1. Compile this under workspace `~/Webots_Ros1_Moveit_UR5e`
 ````
@@ -15,59 +15,7 @@ catkin_make
 ````
 source ~/Webots_Ros1_Moveit_UR5e/devel/setup.bash
 ````
-````
-export WEBOTS_HOME=/usr/local/webots
-````
-## Docker Image
-The [Dockerfile](Dockerfile), which can be used to build a docker image consists of ubuntu18.04, nvidia/cudagl, webots, ros-melodic, moveit, and self-defined ROS packages. 
-This is super useful and convenient. Any computer with recent Docker Engine and Nvidia GPU can easily use this repo without installing a ton of dependence. 
-Also, it can beyond the limitation of operating system, eg. you can even use this repo on Windows. 
-### Creat Image
-Using docker without 'sudo' the cmd. If you never done this before, it is suggested that typing in following cmd:
-````
-sudo groupadd docker
-sudo gpasswd -a ${USER} docker
-sudo systemctl restart docker
-sudo chmod a+rw /var/run/docker.sock
-````
-Create the image using Dockerfile， Run the cmd under `~/Webots_Ros1_Moveit_UR5e`  
-````
-docker build -t webots_moveit_ur5 .
-````
-This will create the deployment image named `webots_moveit_ur5`
 
-### NVIDIA Container Toolkit
-You will need the NVIDIA GPU support for the docker container. To build the bridge, run following cmd:
-```
-curl https://get.docker.com | sh \
-  && sudo systemctl start docker \
-  && sudo systemctl enable docker
-```
-````
-distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
-   && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
-   && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-````
-````
-sudo apt-get update
-sudo apt-get install -y nvidia-docker2
-sudo systemctl restart docker
-````
-### Run Image
-Run docker image in container called `webots_interface`
-````
-docker run --gpus=all --privileged --net=host -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:rw -it --rm --name webots_interface webots_moveit_ur5 bash
-````
-Tips: You can create `.bash_aliases` file in `~` and add the following to it(optional):
-````
-alias wmu_run="docker run --gpus=all --privileged --net=host -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:rw -it --rm --name webots_interface webots_moveit_ur5 bash"
-````
-Such that you only need to issue wmu_run to launch the program.  
-
-This repo needs 4 terminals in total, so after you do docker run in one terminal, you have to open 3 new terminals, and type in following cmd to connect these 3 terminals with the first one you opened by the same container `webots_interface` 
-````
-docker exec -it webots_interface bash
-````
 ## Usage
 ### Launch webots world with ur5 (terminal 1)
 ````
@@ -150,14 +98,3 @@ roslaunch ur5_e_moveit_config ur5_e_moveit_planning_execution.launch
 roslaunch ur5_e_moveit_config moveit_rviz.launch config:=true
 ````
 Now you can control ur5 in Webots by MontionPlanning Plugin in Rviz
-
-## Trouble shooting
-If you cannot launch Webots in docker container, you may need this cmd before you docker run:
-````
-xhost +local:root > /dev/null 2>&1
-````
-
-If you cannot open Rviz in docker container, you may need this cmd before you docker run:
-````
-xhost +local:docker
-````
