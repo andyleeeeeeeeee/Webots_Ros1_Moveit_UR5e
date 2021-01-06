@@ -217,6 +217,6 @@ class TrajectoryFollower(object):
                     # self.motors[i].setVelocity(math.fabs(setpoint.velocities[i]))
                 position_in_tol = within_tolerance(state.position, last_point.positions, [0.1] * 6)
                 velocity_in_tol = within_tolerance(state.velocity, last_point.velocities, [0.05] * 6)
-                if position_in_tol and velocity_in_tol:
+                if position_in_tol:
                     # The arm reached the goal (and isn't moving) => Succeeded
                     self.goal_handle.set_succeeded()
